@@ -1,16 +1,18 @@
 <template>
     <div class="city_body">
         <div class="city_list">
+            <Loading v-if ="isLoading"/>
            <!--  <Loading v-if="isLoading" /> -->
             <!-- <Scroller v-else ref="city_list"> -->
-                
+            <Scroller v-else ref="city_List"> 
+                <div>
                     <div class="city_hot">
                         <h2>热门城市</h2>
                         <ul class="clearfix">
                             <!-- <li>上海</li>
                             <li>北京</li>
-                             -->
-                            <li  v-for="item in hotList" :key="item.id" >{{ item.nm }}</li>
+                            -->
+                            <li  v-for="item in hotList" :key="item.id" @click="handleToCity(item.nm,item.id)">{{ item.nm }}</li>
                         </ul>
                     </div>
                     <!-- <div class="city_sort">
@@ -27,11 +29,12 @@
                         <div v-for="item in cityList" :key="item.index">
                             <h2>{{ item.index }}</h2>
                             <ul>
-                                <li  v-for="itemList in item.list" :key="itemList.id">{{ itemList.nm }}</li>
+                                <li  v-for="itemList in item.list" :key="itemList.id" @click="handleToCity(itemList.nm,itemList.id)">{{ itemList.nm }}</li>
                             </ul>
                         </div>
                     </div>
-               
+                </div>
+            </Scroller>
             <!-- </Scroller> -->
         </div>
        <!--  <div class="city_index">
@@ -126,18 +129,19 @@ export default {
         },
         handleToIndex(index){
             var h2 = this.$refs.city_sort.getElementsByTagName('h2');
-            this.$refs.city_sort.parentNode.scrollTop = h2[index].offsetTop;
+           // this.$refs.city_sort.parentNode.scrollTop = h2[index].offsetTop;
+           this.$refs.city_List.toScrollTop(-h2[index].offsetTop);
             // console.log(h2[index].offsetTop);
             // console.log(this.$refs.city_list.toScrollTop);
             // this.$refs.city_List.toScrollTop(-h2[index].offsetTop);
             //this.$refs.city_list.toScrollTop(-h2[index].offsetTop);
         },
-        /* handleToCity(nm,id){
+        handleToCity(nm,id){
             this.$store.commit('city/CITY_INFO',{ nm,id });
             window.localStorage.setItem('nowNm',nm);
             window.localStorage.setItem('nowId',id);
             this.$router.push('/movie/NowPlaying')
-        } */
+        } 
        
     }
 

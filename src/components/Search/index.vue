@@ -52,9 +52,10 @@ export default {
         message(newVal){
             //console.log(newVal);
             var that = this;
+            var cityId = this.$store.state.city.id;
             this.cancelRequest();
 
-            this.axios.get('/ajax/search?kw='+newVal+'&cityId=10&stype=-1',{
+            this.axios.get('/ajax/search?kw='+newVal+'&cityId='+cityId+'&stype=-1',{
                 cancelToken: new this.axios.CancelToken(function(c){
                     that.source = c;
                     })
