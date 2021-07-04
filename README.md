@@ -18,7 +18,7 @@ npm run build
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-###项目结果展示
+项目结果
 City页面
     ![image](https://github.com/tingge23/miaomiao/blob/master/images/1.png)
 正在热映
