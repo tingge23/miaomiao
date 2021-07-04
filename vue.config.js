@@ -1,11 +1,15 @@
 module.exports= {
-    publicPath : '/miaomiao1',
+    publicPath : '/miaomiao',
     devServer :{  //开发环境配置
         proxy :{  //反向代理字段
             '/api2/' : {
                 target: 'http://39.104.90.62:3000/',
                 changeOrigin: true
             },
+            /* '/api2' : {
+                target : 'http://localhost:3000',
+                changeOrigin : true
+            }, */
             '/ajax/' : {
                 target: 'https://m.maoyan.com',
                 changeOrigin: true
